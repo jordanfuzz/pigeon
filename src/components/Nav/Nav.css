@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Open+Sans');
+
+
+.nav-bar {
+    border: 1px solid black;
+    height: 65px;
+    padding-top: 5px;
+}
+
+.nav-container {
+    width: 150px;
+    padding-left: 10px;
+}
+
+.menu-icon {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.title {
+    font-family: 'Gochi Hand', sans-serif;
+    color: #FF6D56;
+    margin-top: 12px;
+    margin-left: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.login {
+    font-family: 'Open Sans', sans-serif;
+    float: right;
+    margin-top: 15px;
+    color: #222222;
+}
+
+.create-button {
+    float: right;
+    margin: 10px 10px 0 5px;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    border: 2px solid #FF6D56;
+    border-radius: 5px;
+    color: white;
+    background-color: #FF6D56;
+}
+
