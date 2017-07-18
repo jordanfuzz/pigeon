@@ -38,3 +38,21 @@ body {
     display: block;
     margin: -20px auto;
 }
+
+.upload-container {
+    height: 200px;
+    background-color: lightgray;
+    width: 100vw;
+}
+
+.customize-container {
+    height: 200px;
+    background-color: gray;
+    width: 100vw;
+}
+
+.send-container {
+    height: 200px;
+    background-color: #555555;
+    width: 100vw;
+}
