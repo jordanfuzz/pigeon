@@ -1,0 +1,40 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.slideshow-container {
+    margin: 40px auto 0 auto;
+    width: 250px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.intro-text {
+    padding: 10px 40px;
+    text-align: center;
+    font-family: 'Gochi Hand', sans-serif;
+    font-size: 30px;
+    color: #222222
+}
+
+.separator {
+    height: 2px;
+    width: 225px;
+    margin: 0 auto;
+    background-color: #FF6D56;
+    border-radius: 5px;
+}
+
+.get-started-text {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    color: #222222
+}
+
+.down-arrow {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: -20px auto;
+}
