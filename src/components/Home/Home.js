@@ -12,9 +12,7 @@ export default class Home extends Component {
     return (
       <div>
         <section className="home-main">
-          <div className="slideshow-container">
-            <Slideshow/>
-          </div>
+          <Slideshow/>
           <p className="intro-text">Create custom postcards from your mobile device</p>
           <div className="separator"></div>
           <h1 className="get-started-text">GET STARTED</h1>

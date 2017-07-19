@@ -2,16 +2,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.home-main {
-}
-
-.slideshow-container {
-    margin: 40px auto 0 auto;
-    width: 250px;
-    height: 200px;
-    border: 1px solid black;
-}
-
 .intro-text {
     padding: 10px 40px;
     text-align: center;
