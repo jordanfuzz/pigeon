@@ -2,6 +2,9 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.home-main {
+}
+
 .slideshow-container {
     margin: 40px auto 0 auto;
     width: 250px;
@@ -36,23 +39,90 @@ body {
     width: 60px;
     height: 60px;
     display: block;
-    margin: -20px auto;
+    margin: -20px auto 20px auto;
+}
+
+.home-section-top {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home-section-title {
+    color: white;
+    font-family: 'Gochi Hand', sans-serif;
+    margin-left: 15px;
+    font-size: 40px;
+    display: inline-block;
+}
+
+.home-section-title-left {
+    color: #FF6D56;
+    font-family: 'Gochi Hand', sans-serif;
+    padding-left: 15px;
+    font-size: 40px;
+    display: inline-block;
+}
+
+.home-section-description {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.home-section-description-left {
+    color: #222222;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.home-section-photo {
+    margin: 20px 0 0 20px;
+    height: 100px;
+    width: auto;
+}
+
+.home-section-icon {
+    width: 90px;
+    height: 90px;
 }
 
 .upload-container {
     height: 200px;
-    background-color: lightgray;
+    background-color: #FF6D56;
     width: 100vw;
 }
 
 .customize-container {
     height: 200px;
-    background-color: gray;
+    background-color: white;
     width: 100vw;
 }
 
 .send-container {
-    height: 200px;
-    background-color: #555555;
+    height: 250px;
+    background-color: #FF6D56;
     width: 100vw;
+    padding-bottom: 20px;
+}
+
+.separator-white {
+    height: 2px;
+    width: 225px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.home-create-button {
+    height: 35px;
+    width: 120px;
+    font-family: 'Open Sans', sans-serif;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    background-color: #FF6D56;
+    text-align: center;
+    padding-top: 10px;
+    margin: -10px auto 0 auto;
 }
