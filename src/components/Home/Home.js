@@ -4,6 +4,7 @@ import arrow from './down-arrow.svg'
 import image from './image.svg'
 import postcard from './postcard.svg'
 import mail from './message.svg'
+import Slideshow from './Slideshow/Slideshow'
 
 export default class Home extends Component {
 
@@ -11,7 +12,9 @@ export default class Home extends Component {
     return (
       <div>
         <section className="home-main">
-          <div className="slideshow-container"></div>
+          <div className="slideshow-container">
+            <Slideshow/>
+          </div>
           <p className="intro-text">Create custom postcards from your mobile device</p>
           <div className="separator"></div>
           <h1 className="get-started-text">GET STARTED</h1>
