@@ -7,9 +7,34 @@ const Auth0Strategy = require('passport-auth0')
 const config = require('./config.js')
 const massive = require('massive')
 const cors = require('cors')
+const connectionString = 'postgres://yffjwsuvablimm:20dc0312377b43a5967876c82e90096073ca8402751cffe9194c2c424197bf31@ec2-107-22-251-55.compute-1.amazonaws.com:5432/d46jkoh0p1op5q?ssl=true'
 
 
 app.use(bodyParser.json())
+
+massive(connectionString).then( dbInstance => {
+  app.set('db', dbInstance)
+
+  dbInstance.set_schema()
+    .then( () => console.log('Tables successfully reset'))
+    .catch( (err) => console.log('Try again', err));
+
+  passport.use(new Auth0Strategy({
+      domain: config.auth0.domain,
+      clientID: config.auth0.clientID,
+      clientSecret: config.auth0.clientSecret,
+      callbackURL: config.auth0.callbackURL
+    },
+
+    function(accessToken, refreshToken, extraParams, profile, done) {
+      //put db calls here
+
+
+      done(null, profile)
+    }));
+
+});
+
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -18,22 +43,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-passport.use(new Auth0Strategy({
-  domain: config.auth0.domain,
-  clientID: config.auth0.clientID,
-  clientSecret: config.auth0.clientSecret,
-  callbackURL: config.auth0.callbackURL
-},
-
-function(accessToken, refreshToken, extraParams, profile, done) {
-  //put db calls here
-
-
-  done(null, profile)
-}))
 
 passport.serializeUser(function(user, done) {
   console.log('serializing', user);
@@ -44,6 +53,10 @@ passport.deserializeUser(function(user, done) {
   console.log('deserializing', user)
   done(null, user)
 })
+
+// My endpoints
+
+
 
 app.get('/auth', passport.authenticate('auth0'))
 
