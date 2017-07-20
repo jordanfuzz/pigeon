@@ -2,10 +2,9 @@
 
 
 .nav-bar {
-    border: 1px solid black;
+    border-bottom: 2px solid #222222;
     height: 65px;
     padding-top: 5px;
-    margin-bottom: 10px;
     background-color: white;
 }
 
@@ -19,6 +18,10 @@
     width: 40px;
     height: 40px;
     float: left;
+}
+
+.menu-icon:hover {
+    opacity: .5;
 }
 
 .title {
@@ -37,6 +40,10 @@
     color: #222222;
 }
 
+.login:hover {
+    text-decoration: underline;
+}
+
 .create-button {
     float: right;
     margin: 10px 10px 0 5px;
@@ -48,3 +55,29 @@
     background-color: #FF6D56;
 }
 
+.extended-menu {
+    position: relative;
+}
+
+.extended-menu-hidden {
+    position: relative;
+    display: none;
+}
+
+.tab {
+    height: 60px;
+    border-bottom: 2px solid #222222;
+    background-color: #444444;
+    padding-top: 1px;
+}
+
+.tab h2 {
+    color: white;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.tab h2:hover {
+    opacity: .5;
+}
