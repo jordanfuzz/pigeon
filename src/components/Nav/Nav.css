@@ -66,9 +66,20 @@
 
 .tab {
     height: 60px;
+    width: 100%;
     border-bottom: 2px solid #222222;
     background-color: #444444;
     padding-top: 1px;
+    position: absolute;
+    z-index: 100;
+}
+
+.tab-two {
+    top: 63px;
+}
+
+.tab-three {
+    top: 126px;
 }
 
 .tab h2 {
@@ -80,4 +91,8 @@
 
 .tab h2:hover {
     opacity: .5;
+}
+
+.no-underline {
+    text-decoration: none;
 }
