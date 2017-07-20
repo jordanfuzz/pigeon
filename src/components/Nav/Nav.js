@@ -34,7 +34,9 @@ export default class Nav extends Component {
             <h1 className="title">Pigeon</h1>
           </div>
             <div className="create-button">Create</div>
+          <a href="http://localhost:3001/auth">
             <h2 className="login">Log In</h2>
+          </a>
         </div>
         <div className={this.state.menuShown ? `extended-menu` : `extended-menu-hidden`}>
           <Link className="no-underline" to="/">

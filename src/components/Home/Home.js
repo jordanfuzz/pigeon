@@ -5,12 +5,23 @@ import image from './image.svg'
 import postcard from './postcard.svg'
 import mail from './message.svg'
 import Slideshow from './Slideshow/Slideshow'
+import {connect} from 'react-redux'
+import {dispatchGetUser} from '../../services/authenticationService'
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor() {
+    super()
+  }
+
+  componentWillReceiveProps() {
+    console.log('Received props!')
+    dispatchGetUser()
+  }
 
   render () {
     return (
       <div>
+        <div className="welcome-text">{`Welcome, ${this.props.userName}`}</div>
         <section className="home-main">
           <Slideshow/>
           <p className="intro-text">Create custom postcards from your mobile device</p>
@@ -47,3 +58,11 @@ export default class Home extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    userName: state.currentUser.name
+  }
+}
+
+export default connect(mapStateToProps)(Home)
