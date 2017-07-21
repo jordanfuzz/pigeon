@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 massive(connectionString).then( dbInstance => {
   app.set('db', dbInstance)
 
-  dbInstance.set_schema()
+  dbInstance.setSchema()
     .then( () => console.log('Tables successfully reset'))
     .catch( (err) => console.log('Try again', err));
 
@@ -28,9 +28,40 @@ massive(connectionString).then( dbInstance => {
 
     function(accessToken, refreshToken, extraParams, profile, done) {
       //put db calls here
+      let user
+      dbInstance.getUser([profile.identities[0].user_id])
+        .then((response) => {user = response})
+        .catch((err) => console.log('Error while checking user', err))
 
+      // if (user) {
+      //   done(null, user)
+      // } else {
+      //   db.create_user([profile.identities[0].user_id, profile.displayName]).then(function(err, user) {
+      //     done(null, user[0])
+      //   })
+      // }
 
-      done(null, profile)
+      if(user) {
+        console.log('User found. Logging in.')
+        done(null, user)
+      }
+
+      else{
+        console.log(profile)
+        let name = profile.displayName.split(' ')
+        let firstName = name[0]
+        let lastName = name.slice(1).join(' ')
+        dbInstance.createUser([profile.identities[0].user_id, firstName, lastName])
+          .then((user) => {
+            console.log('User added: ', user[0])
+            console.log('Logging in with user')
+            done(null, user[0])
+        })
+          .catch((err) => console.log('Error adding user', err))
+
+        //want to add more info to the user?  If it should be added the first time they log in, do it here
+        //or change the redirect url to get info from the user
+      }
     }));
 
 });
@@ -56,7 +87,13 @@ passport.deserializeUser(function(user, done) {
 
 // My endpoints
 
+app.get('/users', function(req, res, next) {
 
+  dbInstance.getAllUsers()
+    .then((response) => {console.log('First user first name: ', response[0].firstname)})
+    .catch((err) => console.log('Error while checking user', err))
+
+})
 
 app.get('/auth', passport.authenticate('auth0'))
 
