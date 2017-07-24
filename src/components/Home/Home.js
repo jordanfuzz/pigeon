@@ -13,7 +13,7 @@ class Home extends Component {
     super()
   }
 
-  componentWillReceiveProps() {
+  componentWillMount() {
     console.log('Received props!')
     dispatchGetUser()
   }
@@ -21,7 +21,7 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <div className="welcome-text">{`Welcome, ${this.props.userName}`}</div>
+        <div className="welcome-text">{`Welcome, ${this.props.firstName}`}</div>
         <section className="home-main">
           <Slideshow/>
           <p className="intro-text">Create custom postcards from your mobile device</p>
@@ -61,7 +61,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    userName: state.currentUser.name
+    firstName: state.currentUser.firstname
   }
 }
 

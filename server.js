@@ -33,14 +33,6 @@ massive(connectionString).then( dbInstance => {
         .then((response) => {user = response})
         .catch((err) => console.log('Error while checking user', err))
 
-      // if (user) {
-      //   done(null, user)
-      // } else {
-      //   db.create_user([profile.identities[0].user_id, profile.displayName]).then(function(err, user) {
-      //     done(null, user[0])
-      //   })
-      // }
-
       if(user) {
         console.log('User found. Logging in.')
         done(null, user)
@@ -87,12 +79,15 @@ passport.deserializeUser(function(user, done) {
 
 // My endpoints
 
+app.get('/user', function(req, res, next) {
+
+})
+
 app.get('/users', function(req, res, next) {
 
   dbInstance.getAllUsers()
     .then((response) => {console.log('First user first name: ', response[0].firstname)})
     .catch((err) => console.log('Error while checking user', err))
-
 })
 
 app.get('/auth', passport.authenticate('auth0'))
@@ -101,7 +96,8 @@ app.get('/auth/callback', passport.authenticate('auth0',
   {successRedirect: 'http://localhost:3000/'}))
 
 app.get('/auth/me', function(req, res) {
-  if (!req.user) return res.status(200).send({name: 'nobody'});
+  if (!req.user)
+    return res.status(200).send({firstname: 'nobody'});
   res.status(200).send(req.user);
 })
 
