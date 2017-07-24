@@ -27,7 +27,7 @@ export default class Nav extends Component {
 
   render() {
     return (
-      <div>
+      <div className="nav-main">
         <div className="nav-bar">
           <div className="nav-container">
             <img onClick={this.toggleMenu} alt="menu icon" className="menu-icon" src={menu}/>

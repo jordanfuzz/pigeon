@@ -12,6 +12,8 @@
     "express-session": "^1.15.4",
     "jquery": "^3.2.1",
     "massive": "^3.0.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
     "passport": "^0.3.2",
     "passport-auth0": "^0.6.0",
     "react": "^15.6.1",
@@ -23,8 +25,11 @@
     "redux-promise-middleware": "^4.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

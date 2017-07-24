@@ -20,9 +20,9 @@ class Home extends Component {
 
   render () {
     return (
-      <div>
+      <div className="home-main">
         <div className="welcome-text">{`Welcome, ${this.props.firstName}`}</div>
-        <section className="home-main">
+        <section>
           <Slideshow/>
           <p className="intro-text">Create custom postcards from your mobile device</p>
           <div className="separator"></div>
