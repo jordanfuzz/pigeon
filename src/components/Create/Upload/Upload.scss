@@ -1,0 +1,81 @@
+.upload-main {
+
+  .title {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .selected-layout {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    background-size: 300px;
+  }
+
+  .layout-0 {
+    color:red;
+    background-image: url(../Layout/layout0.png);
+    background-repeat: no-repeat;
+  }
+
+  .layout-1 {
+    background-image: url(../Layout/layout1.png);
+    background-repeat: no-repeat;
+  }
+
+  .layout-2 {
+    background-image: url(../Layout/layout2.png);
+    background-repeat: no-repeat;
+  }
+
+  .layout-3 {
+    background-image: url(../Layout/layout3.png);
+    background-repeat: no-repeat;
+  }
+
+  .layout-4 {
+    background-image: url(../Layout/layout4.png);
+    background-repeat: no-repeat;
+  }
+
+  .image-number {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 15px 0 0;
+  }
+
+  .or-separator {
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    display: inline-block;
+    margin-left: 15px;
+
+  }
+
+  .upload-section-button {
+    padding: 5px;
+    width: 70px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    border: 2px solid #FF6D56;
+    border-radius: 2px;
+    color: white;
+    background-color: #FF6D56;
+    text-align: center;
+    display: inline-block;
+    margin-left: 15px;
+  }
+
+  .public-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    display: inline-block;
+    margin: 0;
+  }
+
+
+  .public-checkbox {
+    display: inline-block;
+  }
+
+}
