@@ -55,7 +55,6 @@ massive(connectionString).then( dbInstance => {
         //or change the redirect url to get info from the user
       }
     }));
-
 });
 
 app.use(session({
