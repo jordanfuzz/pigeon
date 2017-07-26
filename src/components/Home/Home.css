@@ -82,4 +82,7 @@
     background-color: #FF6D56;
     text-align: center;
     padding-top: 10px;
-    margin: -10px auto 0 auto; }
+    margin: -10px auto 0 auto;
+    text-decoration: none; }
+  .home-main .create-button-link {
+    text-decoration: none; }

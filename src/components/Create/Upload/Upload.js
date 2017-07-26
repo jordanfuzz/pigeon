@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import './Upload.css'
+import ImageUploader from 'react-images-uploader'
+import 'react-images-uploader/styles.css'
+import 'react-images-uploader/font.css'
 
 export default class Upload extends Component {
 
@@ -38,6 +41,19 @@ export default class Upload extends Component {
         <div className="upload-sections">
           {uploadSections}
         </div>
+        <ImageUploader
+          plusElement={<div className="upload-section-button">Upload</div>}
+          url="/api/upload-image"
+          optimisticPreviews={true}
+          multiple={false}
+          label="Upload a picture!"
+          onLoadEnd={ (err, response) => {
+            if (err)
+              console.log(err)
+            else
+              console.log("Done!", response)
+          }}
+          />
       </div>)
 
   }

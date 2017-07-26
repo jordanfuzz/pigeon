@@ -33,7 +33,9 @@ export default class Nav extends Component {
             <img onClick={this.toggleMenu} alt="menu icon" className="menu-icon" src={menu}/>
             <h1 className="title">Pigeon</h1>
           </div>
+          <Link className="no-underline" to="/create">
             <div className="create-button">Create</div>
+          </Link>
           <a href="http://localhost:3001/auth">
             <h2 className="login">Log In</h2>
           </a>

@@ -7,6 +7,7 @@ import mail from './message.svg'
 import Slideshow from './Slideshow/Slideshow'
 import {connect} from 'react-redux'
 import {dispatchGetUser} from '../../services/authenticationService'
+import {Link} from 'react-router-dom'
 
 class Home extends Component {
   constructor() {
@@ -51,7 +52,9 @@ class Home extends Component {
             </div>
             <p className="home-section-description">Send a printed postcard to your friends</p>
             <div className="separator-white"></div>
-            <div className="home-create-button">Start Creating</div>
+            <Link className="create-button-link" to="/create">
+              <div className="home-create-button">Start Creating</div>
+            </Link>
           </div>
         </section>
       </div>

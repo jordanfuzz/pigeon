@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './Create.css'
 import Layout from './Layout/Layout'
 import Upload from './Upload/Upload'
+import Message from './Message/Message'
 
 export default class Create extends Component {
 
@@ -48,6 +49,8 @@ export default class Create extends Component {
         return <Layout updateLayout={this.updateLayout} selectedLayout={this.state.selectedLayout} />
       case 1:
         return <Upload selectedLayout={this.state.selectedLayout} />
+      case 2:
+        return <Message />
       default:
         return null
     }
@@ -56,7 +59,6 @@ export default class Create extends Component {
   render () {
     let currentStep = this.getCurrentStep(this.state.currentStepIndex)
 
-
     return (
       <div className="create-main">
         {currentStep}
@@ -64,7 +66,6 @@ export default class Create extends Component {
           <div onClick={this.handleGoBack} className={`step-button previous ${this.state.currentStepIndex > 0 ? `shown-button` : `hidden-button`}`}>Previous</div>
           <div onClick={this.handleProceed} className="step-button next">Next</div>
         </div>
-
       </div>
     )
   }
