@@ -10,12 +10,8 @@ export default class Message extends Component {
     return (
       <div className="message-main">
         <div className="postcard">
-
         </div>
       </div>
     )
-
   }
-
-
 }

@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import './Upload.css'
-import ImageUploader from 'react-images-uploader'
 import 'react-images-uploader/styles.css'
 import 'react-images-uploader/font.css'
+import ReactUploadFile from 'react-upload-file'
+import UploadButton from './UploadButton/UploadButton'
+import axios from 'axios'
 
 export default class Upload extends Component {
 
@@ -16,6 +18,14 @@ export default class Upload extends Component {
     else return 4
   }
 
+  handleFileUpload(x) {
+    let data = new FormData();
+    let file = x.target.files[0];
+    data.append('image', file);
+
+    return axios.post('/api/images', data, {headers: { 'content-type': 'multipart/form-data' }})
+  }
+  
   render() {
     let imageCount
     if(this.props) {
@@ -25,7 +35,7 @@ export default class Upload extends Component {
     for (let i = 0; i < imageCount; i++) {
       uploadSections.push(<div key={i}>
         <h1 className="image-number">{`${i+1}  -`}</h1>
-        <div className="upload-section-button">Upload</div>
+        <input type="file" onChange={this.handleFileUpload} />
         <p className="or-separator">-or-</p>
         <div className="upload-section-button">Choose</div>
         <br/>
@@ -41,19 +51,6 @@ export default class Upload extends Component {
         <div className="upload-sections">
           {uploadSections}
         </div>
-        <ImageUploader
-          plusElement={<div className="upload-section-button">Upload</div>}
-          url="/api/upload-image"
-          optimisticPreviews={true}
-          multiple={false}
-          label="Upload a picture!"
-          onLoadEnd={ (err, response) => {
-            if (err)
-              console.log(err)
-            else
-              console.log("Done!", response)
-          }}
-          />
       </div>)
 
   }

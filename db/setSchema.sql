@@ -35,14 +35,14 @@ VALUES (1, 'Paris');
 DROP TABLE IF EXISTS Image;
 
 CREATE TABLE Image (
-  ImageId integer PRIMARY KEY,
+  ImageId SERIAL PRIMARY KEY,
   CustomerId integer,
   LocationId integer,
   URL text,
   IsPublic boolean);
 
-INSERT INTO Image (ImageId, CustomerId, LocationId, URL, IsPublic)
-VALUES (1, 1, 1, '', false);
+INSERT INTO Image (CustomerId, LocationId, URL, IsPublic)
+VALUES (1, 1, '', false);
 
 
 DROP TABLE IF EXISTS PostcardImage;
