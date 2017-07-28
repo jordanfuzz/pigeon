@@ -9,7 +9,6 @@ const massive = require('massive')
 const cors = require('cors')
 const AWS = require('aws-sdk')
 const fs = require('fs')
-const multiparty = require('multiparty')
 
 let userRepository
 let imageRepository
@@ -85,24 +84,28 @@ passport.deserializeUser(function (user, done) {
 app.post('/api/images', function (req, res) {
   AWS.config.loadFromPath('./aws-config.json');
   const s3 = new AWS.S3()
-  const multipartForm = new multiparty.Form()
+  const s3Params = {
+    Bucket: 'pigeon-postcard',
+    Key: 'myimage.jpg',
+    ContentType: req.get('Content-type'),
+    ContentLength: req.get('Content-length'),
+    Body: req
+  }
+  s3.upload(
+    s3Params,
+    {patSize: 5 * 1024 * 1024, queueSize: 1},
+    (err, response) => {
+      console.log(err, response)
+    }
+  )
+  //send back s3 url
+  res.status(200).send()
+})
 
-  multipartForm.parse(req, function(err, fields, files) {
-    fs.readFile(files.image[0].path, function (err, data) {
-      s3.putObject({
-          Bucket: 'pigeon-postcard',
-          Key: 'myimage.jpg',
-          ContentType: "image/jpg;charset=utf-8",
-          CacheControl: "public, max-age=31536000",
-          Body: data
-        },
-        (err, response) => {console.log(err, response) }
-      )
-      //send back s3 url
-      res.status(200).send()
 
-    })
-  });
+app.post('/api/images/crop-info', function (req, res) {
+  console.log('crop-info:', req.body)
+  res.status(200).send()
 })
 
 app.get('/users', function (req, res, next) {
