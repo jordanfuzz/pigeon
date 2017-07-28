@@ -3,6 +3,7 @@
   .title {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
+    margin-top: 0;
   }
 
   .selected-layout {
@@ -49,7 +50,6 @@
     font-family: 'Open Sans', sans-serif;
     display: inline-block;
     margin-left: 15px;
-
   }
 
   .upload-section-button {
@@ -64,6 +64,19 @@
     text-align: center;
     display: inline-block;
     margin-left: 15px;
+  }
+
+  .relative {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .invisible {
+    opacity: 0;
+    size: 60px;
+    position: absolute;
+    left: -3px;
+    top: 3px;
   }
 
   .public-text {

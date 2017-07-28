@@ -1,9 +1,5 @@
 import React, {Component} from 'react'
 import './Upload.css'
-import 'react-images-uploader/styles.css'
-import 'react-images-uploader/font.css'
-import ReactUploadFile from 'react-upload-file'
-import UploadButton from './UploadButton/UploadButton'
 import axios from 'axios'
 
 export default class Upload extends Component {
@@ -31,11 +27,14 @@ export default class Upload extends Component {
     if(this.props) {
       imageCount = this.countImages(this.props.selectedLayout)
     }
+
     let uploadSections = []
     for (let i = 0; i < imageCount; i++) {
       uploadSections.push(<div key={i}>
         <h1 className="image-number">{`${i+1}  -`}</h1>
-        <input type="file" onChange={this.handleFileUpload} />
+        <div className="upload-section-button relative">Upload
+          <input className="invisible" type="file" onChange={this.handleFileUpload} />
+        </div>
         <p className="or-separator">-or-</p>
         <div className="upload-section-button">Choose</div>
         <br/>

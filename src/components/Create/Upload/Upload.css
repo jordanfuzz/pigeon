@@ -1,6 +1,7 @@
 .upload-main .title {
   text-align: center;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 0; }
 
 .upload-main .selected-layout {
   width: 300px;
@@ -52,6 +53,17 @@
   text-align: center;
   display: inline-block;
   margin-left: 15px; }
+
+.upload-main .relative {
+  overflow: hidden;
+  position: relative; }
+
+.upload-main .invisible {
+  opacity: 0;
+  size: 60px;
+  position: absolute;
+  left: -3px;
+  top: 3px; }
 
 .upload-main .public-text {
   font-family: 'Open Sans', sans-serif;

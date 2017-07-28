@@ -1,6 +1,7 @@
 .layout-main .title {
   text-align: center;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 0; }
 
 .layout-main .selected-layout {
   width: 300px;
