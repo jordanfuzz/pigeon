@@ -18,6 +18,8 @@ class Recipient extends Component {
   }
 
   handleChange(key, value) {
+    if(key === "recipientName")
+      this.props.updateRecipientName(value)
     this.setState({
       [key]: value
     })

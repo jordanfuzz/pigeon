@@ -2,7 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Home from './components/Home/Home'
 import Create from './components/Create/Create'
-import Cart from './components/Cart/Cart'
+import Cart from './components/Create/Cart/Cart'
 
 
 

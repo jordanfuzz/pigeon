@@ -12,10 +12,11 @@ class Create extends Component {
   constructor() {
     super()
     this.state = {
-      selectedLayout: 0,
       currentStepIndex: 0,
+      selectedLayout: 0,
       selectedFont: "Open Sans",
-      message: ""
+      message: "",
+      recipientName: ""
     }
 
     this.updateLayout = this.updateLayout.bind(this)
@@ -24,6 +25,7 @@ class Create extends Component {
     this.getCurrentStep = this.getCurrentStep.bind(this)
     this.updatePostcardFont = this.updatePostcardFont.bind(this)
     this.updatePostcardMessage = this.updatePostcardMessage.bind(this)
+    this.updateRecipientName = this.updateRecipientName.bind(this)
   }
 
   getChildContext() {
@@ -46,6 +48,11 @@ class Create extends Component {
     })
   }
 
+  updateRecipientName(name) {
+    this.setState({
+      recipientName: name
+    })
+  }
 
   handleProceed(event) {
     event.preventDefault()
@@ -61,6 +68,12 @@ class Create extends Component {
     this.setState({
       currentStepIndex: this.state.currentStepIndex - 1
     })
+  }
+
+  handleFinish(event) {
+    event.preventDefault()
+    //create postcard db call
+
   }
 
   updateLayout(layout) {
@@ -79,7 +92,7 @@ class Create extends Component {
       case 2:
         return <Message updatePostcardFont={this.updatePostcardFont} updatePostcardMessage={this.updatePostcardMessage}/>
       case 3:
-        return <Recipient />
+        return <Recipient updateRecipientName={this.updateRecipientName}/>
       default:
         return null
     }
@@ -94,6 +107,7 @@ class Create extends Component {
         <div className="button-container">
           <div onClick={this.handleGoBack} className={`step-button previous ${this.state.currentStepIndex > 0 ? `shown-button` : `hidden-button`}`}>Previous</div>
           <div onClick={this.handleProceed} className={`step-button next ${this.state.currentStepIndex < 3 ? `shown-button` : `hidden-button`}`}>Next</div>
+          <div onClick={this.handleFinish} className={`step-button previous ${this.state.currentStepIndex === 3 ? `shown-button` : `hidden-button`}`}>Finish</div>
         </div>
       </div>
     )
