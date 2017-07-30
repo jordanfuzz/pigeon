@@ -6,5 +6,20 @@
     margin-top: 0;
   }
 
+  .recipient-header {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    margin: 10px 0 0 15px;
+  }
+
+  .inline {
+    display: inline-block;
+    border: 1px solid #222;
+  }
+
+  .state {
+    width: 30px;
+  }
+
 
 }
