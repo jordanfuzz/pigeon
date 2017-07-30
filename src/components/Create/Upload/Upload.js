@@ -33,10 +33,10 @@ export default class Upload extends Component {
   }
 
   handleFileUpload(event) {
-    let file = event.target.files[0];
+    let file = event.target.files[0]
     let reader = new FileReader()
     reader.onloadend = () => {
-      this.setState({imageSource: reader.result});
+      this.setState({imageSource: reader.result})
     }
     reader.readAsDataURL(file)
 
@@ -46,24 +46,24 @@ export default class Upload extends Component {
   }
 
   cropImage() {
-    let image = new Image();
+    let image = new Image()
     image.onload = () => {
-      let imageWidth = image.naturalWidth;
-      let imageHeight = image.naturalHeight;
+      let imageWidth = image.naturalWidth
+      let imageHeight = image.naturalHeight
       let crop = this.state.crop
 
-      let cropX = (crop.x / 100) * imageWidth;
-      let cropY = (crop.y / 100) * imageHeight;
+      let cropX = (crop.x / 100) * imageWidth
+      let cropY = (crop.y / 100) * imageHeight
 
-      let cropWidth = (crop.width / 100) * imageWidth;
-      let cropHeight = (crop.height / 100) * imageHeight;
+      let cropWidth = (crop.width / 100) * imageWidth
+      let cropHeight = (crop.height / 100) * imageHeight
 
-      let canvas = document.createElement('canvas');
-      canvas.width = cropWidth;
-      canvas.height = cropHeight;
-      let ctx = canvas.getContext('2d');
+      let canvas = document.createElement('canvas')
+      canvas.width = cropWidth
+      canvas.height = cropHeight
+      let ctx = canvas.getContext('2d')
 
-      ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+      ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight)
 
       this.setState({
         cropX,
@@ -73,11 +73,11 @@ export default class Upload extends Component {
         croppedImageSource: canvas.toDataURL('image/jpeg')
       })
       axios.post('/api/images/crop-info', crop, {headers: {'content-type': 'application/json'}})
-      // this.ready();
+      // this.ready()
 
       image = null;
     };
-    image.src = this.state.imageSource;
+    image.src = this.state.imageSource
   }
 
   render() {

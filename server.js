@@ -21,7 +21,7 @@ massive(config.connectionString).then(dbInstance => {
 })
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}))
 
 passport.use(new Auth0Strategy({
     domain: config.auth0.domain,
@@ -66,11 +66,11 @@ app.use(session({
   secret: config.sessionSecret
 }))
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 
 passport.serializeUser(function (user, done) {
-  console.log('serializing', user);
+  console.log('serializing', user)
   done(null, user)
 })
 
@@ -82,7 +82,7 @@ passport.deserializeUser(function (user, done) {
 // My endpoints
 
 app.post('/api/images', function (req, res) {
-  AWS.config.loadFromPath('./aws-config.json');
+  AWS.config.loadFromPath('./aws-config.json')
   const s3 = new AWS.S3()
   const s3Params = {
     Bucket: 'pigeon-postcard',
@@ -98,6 +98,7 @@ app.post('/api/images', function (req, res) {
       console.log(err, response)
     }
   )
+
   //send back s3 url
   res.status(200).send()
 })

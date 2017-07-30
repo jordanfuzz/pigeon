@@ -1,0 +1,31 @@
+.postcard-back-main .postcard {
+  width: 300px;
+  height: 200px;
+  margin: 0 auto;
+  background-size: 300px;
+  border: 2px solid #999;
+  position: relative; }
+
+.postcard-back-main .postcard-text {
+  width: 120px;
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  height: 160px;
+  white-space: pre-wrap;
+  color: #222222;
+  font-size: 14px; }
+
+.postcard-back-main .divider {
+  height: 150px;
+  margin: 25px auto;
+  width: 2px;
+  background-color: #999; }
+
+.postcard-back-main .stamp {
+  height: 30px;
+  width: 25px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 2px solid #999; }
