@@ -88,8 +88,8 @@ export default class Upload extends Component {
 
     let uploadSections = []
     for (let i = 0; i < imageCount; i++) {
-      uploadSections.push(<div key={i}>
-        <h1 className="image-number">{`${i + 1}  -`}</h1>
+      uploadSections.push(<div key={i} className="upload-section">
+        <div className="image-number-container"><h1 className="image-number">{`${i + 1}  -`}</h1></div>
         <div className="upload-section-button relative">Upload
           <input className="invisible" type="file" onChange={(event) => this.handleFileUpload(event)}/>
         </div>
@@ -110,6 +110,10 @@ export default class Upload extends Component {
           onRequestClose={() => {
             this.setState({imageSource: null})
           }}
+          style={{
+            overlay: { backgroundColor: 'rgba(10, 10, 10, 0.85)' },
+            content: { bottom: 'unset' }
+          }}
           contentLabel="Crop Image">
           {this.state.imageSource
             ? <ReactCrop
@@ -120,7 +124,9 @@ export default class Upload extends Component {
               src={this.state.imageSource}/>
             : null}
 
-          <button className="upload-section-button" onClick={() => this.cropImage()}>Done</button>
+          <div className="done-button-container">
+            <div className="upload-section-button" onClick={() => this.cropImage()}>Done</div>
+          </div>
         </Modal>
         <h1 className="title">Upload Photos</h1>
         <div className={`selected-layout layout-${this.props.selectedLayout}`}>

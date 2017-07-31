@@ -8,9 +8,18 @@
   font-size: 22px;
   margin: 10px 0 0 15px; }
 
-.recipient-main .inline {
+.recipient-main .recipient-field {
+  display: block;
+  border: 1px solid #888;
+  font-size: 22px;
+  margin: 10px 0 0 16px;
+  padding: 5px;
+  width: 292px; }
+
+.recipient-main .city {
   display: inline-block;
-  border: 1px solid #222; }
+  width: 212px; }
 
 .recipient-main .state {
-  width: 30px; }
+  display: inline-block;
+  width: 52px; }

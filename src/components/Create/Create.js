@@ -5,6 +5,8 @@ import Upload from './Upload/Upload'
 import Message from './Message/Message'
 import Recipient from './Recipient/Recipient'
 import PropTypes from 'prop-types'
+import Cart from './Cart/Cart'
+import {withRouter} from 'react-router-dom'
 
 class Create extends Component {
 
@@ -26,6 +28,8 @@ class Create extends Component {
     this.updatePostcardFont = this.updatePostcardFont.bind(this)
     this.updatePostcardMessage = this.updatePostcardMessage.bind(this)
     this.updateRecipientName = this.updateRecipientName.bind(this)
+    this.handleFinish = this.handleFinish.bind(this)
+
   }
 
   getChildContext() {
@@ -73,8 +77,10 @@ class Create extends Component {
   handleFinish(event) {
     event.preventDefault()
     //create postcard db call
+    this.props.history.push('/cart')
 
   }
+
 
   updateLayout(layout) {
     this.setState({
@@ -93,6 +99,8 @@ class Create extends Component {
         return <Message updatePostcardFont={this.updatePostcardFont} updatePostcardMessage={this.updatePostcardMessage}/>
       case 3:
         return <Recipient updateRecipientName={this.updateRecipientName}/>
+      case 4:
+        return <Cart recipientName={this.state.recipientName}/>
       default:
         return null
     }
@@ -120,4 +128,4 @@ Create.childContextTypes = {
   message: PropTypes.string
 }
 
-export default Create
+export default withRouter(Create)

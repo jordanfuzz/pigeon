@@ -18,7 +18,7 @@ class Recipient extends Component {
   }
 
   handleChange(key, value) {
-    if(key === "recipientName")
+    if (key === "recipientName")
       this.props.updateRecipientName(value)
     this.setState({
       [key]: value
@@ -34,21 +34,21 @@ class Recipient extends Component {
     </div>)
 
 
-    return(<div className="recipient-main">
+    return (<div className="recipient-main">
       <h1 className="title">Enter the Recipient</h1>
-      <PostcardBack address={address} />
-      <h6 className="recipient-header">Name:</h6>
-      <input className="inline" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientName" value={this.state.recipientName} type="text"/>
-      <h6 className="recipient-header">Street Address:</h6>
-      <input className="inline" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientAddress" value={this.state.recipientAddress} type="text"/>
-      <h6 className="recipient-header">City:</h6>
-      <input className="inline" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientCity" value={this.state.recipientCity} type="text"/>
-      <h6 className="recipient-header">State:</h6>
-      <input className="inline state" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientState" value={this.state.recipientState} type="text"/>
-      <h6 className="recipient-header">Postal Code:</h6>
-      <input className="inline" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientPostalCode" value={this.state.recipientPostalCode} type="text"/>
-      <h6 className="recipient-header">Country:</h6>
-      <input className="inline" onChange={(e) => this.handleChange(e.target.name, e.target.value)} name="recipientCountry" value={this.state.recipientCountry} type="text"/>
+      <PostcardBack address={address}/>
+      <input placeholder="Name" className="recipient-field" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientName" value={this.state.recipientName} type="text"/>
+      <input placeholder="Address" className="recipient-field" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientAddress" value={this.state.recipientAddress} type="text"/>
+      <input placeholder="City" className="recipient-field city" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientCity" value={this.state.recipientCity} type="text"/>
+      <input placeholder="State" className="recipient-field state" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientState" value={this.state.recipientState} type="text"/>
+      <input placeholder="Postal Code" className="recipient-field" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientPostalCode" value={this.state.recipientPostalCode} type="text"/>
+      <input placeholder="Country" className="recipient-field" onChange={(e) => this.handleChange(e.target.name, e.target.value)}
+             name="recipientCountry" value={this.state.recipientCountry} type="text"/>
     </div>)
   }
 

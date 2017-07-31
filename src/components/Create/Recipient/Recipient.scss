@@ -12,13 +12,23 @@
     margin: 10px 0 0 15px;
   }
 
-  .inline {
-    display: inline-block;
-    border: 1px solid #222;
+  .recipient-field {
+    display: block;
+    border: 1px solid #888;
+    font-size:22px;
+    margin: 10px 0 0 16px;
+    padding:5px;
+    width: 292px;
+  }
+
+  .city {
+    display:inline-block;
+    width: 212px;
   }
 
   .state {
-    width: 30px;
+    display:inline-block;
+    width: 52px;
   }
 
 

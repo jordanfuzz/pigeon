@@ -11,14 +11,19 @@
   .message-header {
     font-family: 'Open Sans', sans-serif;
     font-size: 22px;
-    margin: 10px 0 0 15px;
+    margin: 25px 10px 0 15px;
+    display: inline-block;
   }
 
   .message-box {
     height: 100px;
-    width: 250px;
+    width: 293px;
     border: 1px solid #222;
-    margin: 15px 0 0 20px;
+    margin: 5px 0 0 16px;
+  }
+
+  .font-selector {
+    font-size:22px;
   }
 
 }
