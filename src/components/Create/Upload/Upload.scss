@@ -11,32 +11,38 @@
     height: 200px;
     margin: 0 auto;
     background-size: 300px;
+    position:relative;
   }
 
   .layout-0 {
     color:red;
     background-image: url(../Layout/layout0.png);
     background-repeat: no-repeat;
+    background-size: 300px 200px;
   }
 
   .layout-1 {
     background-image: url(../Layout/layout1.png);
     background-repeat: no-repeat;
+    background-size: 300px 200px;
   }
 
   .layout-2 {
     background-image: url(../Layout/layout2.png);
     background-repeat: no-repeat;
+    background-size: 300px 200px;
   }
 
   .layout-3 {
     background-image: url(../Layout/layout3.png);
     background-repeat: no-repeat;
+    background-size: 300px 200px;
   }
 
   .layout-4 {
     background-image: url(../Layout/layout4.png);
     background-repeat: no-repeat;
+    background-size: 300px 200px;
   }
 
   .image-number {

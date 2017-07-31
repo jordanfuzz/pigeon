@@ -10,16 +10,73 @@ export default class Upload extends Component {
     super(props)
 
     this.state = {
-      imageSource: null,
+      imageSources: [],
       crop: {
         width: 50,
-        aspect: 3/2,
-        x:0,
-        y:0
+        x: 0,
+        y: 0
       }
     }
 
     this.cropImage = this.cropImage.bind(this)
+    this.setCropParameters = this.setCropParameters.bind(this)
+  }
+
+  layouts = {
+    '0': [
+      {
+        aspect: 3 / 2,
+        width: '300px',
+        position: {left: 0, top: 0}
+      },
+    ],
+    '1': [
+      {
+        aspect: 3 / 4,
+        width: '150px',
+        position: {left: 0, top: 0}
+      },
+      {
+        aspect: 3 / 4,
+        width: '150px',
+        position: {left: 150, top: 0}
+      },
+    ],
+    '2': [
+      {
+        aspect: 3 / 4,
+        width: '150px',
+        position: {left: 0, top: 0}
+      },
+      {
+        aspect: 3 / 2,
+        width: '150px',
+        position: {left: 150, top: 0}
+      },
+      {
+        aspect: 3 / 2,
+        width: '150px',
+        position: {left: 150, top: 100}
+      },
+    ],
+    '3': [
+      {
+        aspect: 3 / 2,
+        width: '150px',
+        position: {left: 0, top: 0}
+      },
+      {
+        aspect: 3 / 2,
+        width: '150px',
+        position: {left: 0, top: 100}
+      },
+      {
+        aspect: 3 / 4,
+        width: '150px',
+        position: {left: 150, top: 0}
+      },
+    ]
+
   }
 
   countImages(layout) {
@@ -32,11 +89,15 @@ export default class Upload extends Component {
     else return 4
   }
 
-  handleFileUpload(event) {
+  handleFileUpload(event, imageIndex) {
     let file = event.target.files[0]
     let reader = new FileReader()
     reader.onloadend = () => {
-      this.setState({imageSource: reader.result})
+      const imageSources = this.state.imageSources.slice(0)
+      imageSources[imageIndex] = {originalImageSource: reader.result}
+      this.setState({
+        imageSources
+      })
     }
     reader.readAsDataURL(file)
 
@@ -56,7 +117,7 @@ export default class Upload extends Component {
       let cropY = (crop.y / 100) * imageHeight
 
       let cropWidth = (crop.width / 100) * imageWidth
-      let cropHeight = (crop.height / 100) * imageHeight
+      let cropHeight = cropWidth * (1/crop.aspect)
 
       let canvas = document.createElement('canvas')
       canvas.width = cropWidth
@@ -65,19 +126,39 @@ export default class Upload extends Component {
 
       ctx.drawImage(image, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight)
 
+      let imageSources = this.state.imageSources.splice(0)
+      let index = this.state.currentImageIndex
+      let imageSrc = canvas.toDataURL('image/jpeg')
+      imageSources[index] = Object.assign(imageSources[index], {croppedImageSource: imageSrc})
+
       this.setState({
         cropX,
         cropY,
         cropWidth,
         cropHeight,
-        croppedImageSource: canvas.toDataURL('image/jpeg')
+        imageSources
       })
       axios.post('/api/images/crop-info', crop, {headers: {'content-type': 'application/json'}})
-      // this.ready()
 
       image = null;
     };
-    image.src = this.state.imageSource
+    image.src = this.state.imageSources[this.state.currentImageIndex].originalImageSource
+  }
+
+  setCropParameters(imageIndex) {
+    this.setState({
+      currentImageIndex: imageIndex,
+      crop: Object.assign(this.state.crop, {aspect: this.layouts[this.props.selectedLayout][imageIndex].aspect})
+    })
+  }
+
+  renderImage(imageParams, i) {
+    let image = this.state.imageSources[i] || {}
+    console.log(imageParams)
+    return image.croppedImageSource
+      ? <img style={{opacity: .75, position:'absolute', width: imageParams.width, top: imageParams.position.top, left: imageParams.position.left}}
+             src={image.croppedImageSource} key={i}/>
+      : null
   }
 
   render() {
@@ -91,7 +172,8 @@ export default class Upload extends Component {
       uploadSections.push(<div key={i} className="upload-section">
         <div className="image-number-container"><h1 className="image-number">{`${i + 1}  -`}</h1></div>
         <div className="upload-section-button relative">Upload
-          <input className="invisible" type="file" onChange={(event) => this.handleFileUpload(event)}/>
+          <input className="invisible" type="file" onClick={() => this.setCropParameters(i)}
+                 onChange={(event) => this.handleFileUpload(event, i)}/>
         </div>
         <p className="or-separator">-or-</p>
         <div className="upload-section-button">Choose</div>
@@ -101,27 +183,28 @@ export default class Upload extends Component {
       </div>)
     }
 
+    let currentImage = this.state.imageSources[this.state.currentImageIndex] || {}
 
     return (
       <div className="upload-main">
 
         <Modal
-          isOpen={!!this.state.imageSource && !this.state.croppedImageSource}
+          isOpen={!!currentImage.originalImageSource && !currentImage.croppedImageSource}
           onRequestClose={() => {
             this.setState({imageSource: null})
           }}
           style={{
-            overlay: { backgroundColor: 'rgba(10, 10, 10, 0.85)' },
-            content: { bottom: 'unset' }
+            overlay: {backgroundColor: 'rgba(10, 10, 10, 0.85)'},
+            content: {bottom: 'unset'}
           }}
           contentLabel="Crop Image">
-          {this.state.imageSource
+          {currentImage.originalImageSource
             ? <ReactCrop
               onComplete={(crop) => {
                 this.setState({crop})
               }}
               crop={this.state.crop}
-              src={this.state.imageSource}/>
+              src={currentImage.originalImageSource}/>
             : null}
 
           <div className="done-button-container">
@@ -130,9 +213,7 @@ export default class Upload extends Component {
         </Modal>
         <h1 className="title">Upload Photos</h1>
         <div className={`selected-layout layout-${this.props.selectedLayout}`}>
-          {this.state.croppedImageSource
-            ? <img style={{width:'300px'}} src={this.state.croppedImageSource}/>
-            : null}
+          {this.layouts[this.props.selectedLayout].map((imageParams, i) => this.renderImage(imageParams, i))}
         </div>
         <div className="upload-sections">
           {uploadSections}

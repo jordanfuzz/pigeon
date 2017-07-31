@@ -7,28 +7,34 @@
   width: 300px;
   height: 200px;
   margin: 0 auto;
-  background-size: 300px; }
+  background-size: 300px;
+  position: relative; }
 
 .upload-main .layout-0 {
   color: red;
   background-image: url(../Layout/layout0.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: 300px 200px; }
 
 .upload-main .layout-1 {
   background-image: url(../Layout/layout1.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: 300px 200px; }
 
 .upload-main .layout-2 {
   background-image: url(../Layout/layout2.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: 300px 200px; }
 
 .upload-main .layout-3 {
   background-image: url(../Layout/layout3.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: 300px 200px; }
 
 .upload-main .layout-4 {
   background-image: url(../Layout/layout4.png);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  background-size: 300px 200px; }
 
 .upload-main .image-number {
   display: inline-block;
