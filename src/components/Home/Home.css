@@ -1,5 +1,8 @@
 .home-main {
   font-family: 'Open Sans', sans-serif; }
+  .home-main .welcome-text {
+    text-align: right;
+    margin: 5px 10px 0 0; }
   .home-main .intro-text {
     padding: 10px 40px;
     text-align: center;

@@ -77,7 +77,7 @@ class Create extends Component {
   handleFinish(event) {
     event.preventDefault()
     //create postcard db call
-    this.props.history.push('/cart')
+    // this.props.history.push('/cart')
 
   }
 

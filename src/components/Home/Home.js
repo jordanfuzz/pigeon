@@ -22,7 +22,7 @@ class Home extends Component {
   render () {
     return (
       <div className="home-main">
-        <div className="welcome-text">{`Welcome, ${this.props.firstName}`}</div>
+        <div className="welcome-text">{this.props.firstName ? `Welcome, ${this.props.firstName}` : ""}</div>
         <section>
           <Slideshow/>
           <p className="intro-text">Create custom postcards from your mobile device</p>

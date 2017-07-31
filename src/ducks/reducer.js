@@ -1,5 +1,5 @@
 let initialState = {
-  currentUser: {firstname: "Nobody", lastName: "Charles"}
+  currentUser: {lastName: "Charles"}
 }
 
 //action types

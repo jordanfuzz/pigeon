@@ -125,7 +125,7 @@ app.get('/auth/callback', passport.authenticate('auth0',
 
 app.get('/auth/me', function (req, res) {
   if (!req.user)
-    return res.status(200).send({firstname: 'nobody'});
+    return res.status(200).send({firstname: null});
   res.status(200).send(req.user);
 })
 
